@@ -13,8 +13,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    @for (terremoto of terremotos; track terremoto; let index = $index){
+    <ion-item [button]="true">
+        <ion-label>
+          <h2>
+            {{ terremoto.properties.place }}
+          </h2>
+        </ion-label>
+    </ion-item>
+    }
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+
+  
 </ion-content>
